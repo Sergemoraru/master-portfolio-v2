@@ -9,6 +9,7 @@ import AboutMe from '@/components/aboutMe';
 import Projects from '@/components/projects';
 import Contact from '@/components/contact';
 import Footer from '@/components/footer';
+import MySkills from '@/components/mySkills';
 
 export default function Home() {
   const [showChevronDown, setShowChevronDown] = useState(true);
@@ -83,6 +84,9 @@ export default function Home() {
       <div className='flex flex-col justify-center items-center relative top-56' id='aboutMeSection'>
           <AboutMe />
         </div>
+            <div>
+              <MySkills />
+            </div>
             <div>
               <Projects />
             </div>
