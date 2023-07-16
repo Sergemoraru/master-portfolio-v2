@@ -6,12 +6,12 @@ const useTypewriterEffect = () => {
   useEffect(() => {
     class TxtType {
       type: any;
-        toRotate: any;
-        el: any;
-        loopNum: number;
-        period: number;
-        txt: string;
-        isDeleting: boolean;
+      toRotate: any;
+      el: any;
+      loopNum: number;
+      period: number;
+      txt: string;
+      isDeleting: boolean;
 
       constructor(el, toRotate, period) {
         this.toRotate = toRotate;
@@ -33,7 +33,9 @@ const useTypewriterEffect = () => {
           this.txt = fullTxt.substring(0, this.txt.length + 1);
         }
 
-        this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+        if (this.el) {
+          this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+        }
 
         let delta = 200 - Math.random() * 100;
 
@@ -54,6 +56,10 @@ const useTypewriterEffect = () => {
           this.tick();
         }, delta);
       }
+
+      clearTimer() {
+        clearTimeout(this.type);
+      }
     }
 
     const initTypeWriter = () => {
@@ -62,7 +68,8 @@ const useTypewriterEffect = () => {
         const toRotate = elements[i].getAttribute('data-type');
         const period = elements[i].getAttribute('data-period');
         if (toRotate) {
-          new TxtType(elements[i], JSON.parse(toRotate), period);
+          const txtType = new TxtType(elements[i], JSON.parse(toRotate), period);
+          elementRef.current = txtType;
         }
       }
     };
@@ -70,11 +77,13 @@ const useTypewriterEffect = () => {
     initTypeWriter();
 
     return () => {
-      clearTimeout(this.type);
+      if (elementRef.current) {
+        elementRef.current.clearTimer();
+      }
     };
   }, []);
 
-  return elementRef;
+  return elementRef.current;
 };
 
 const TypeWriterText = () => {
