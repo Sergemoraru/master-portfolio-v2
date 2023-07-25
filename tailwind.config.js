@@ -7,6 +7,12 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    fontFamily: {
+      cursive: ['"Clicker Script"', 'cursive'],
+      sans: ['"Open Sans"', 'sans-serif'],
+      serif: ['"Merriweather"', 'serif'],
+    },
+
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -15,5 +21,6 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+  ],
 }

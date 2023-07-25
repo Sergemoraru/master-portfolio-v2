@@ -8,7 +8,8 @@ const AboutMe = () => {
     return (
         <div className="flex flex-col justify-center items-center pb-14 bg-slate-200">
             <div >
-                <p className="text-5xl font-bold text-sky-500 relative pb-10 pt-32 justify-center text-center left-72">About Me</p>
+                <p className="flex text-5xl font-bold text-slate-500 relative pb-10 pt-32 justify-center text-center left-72">About 
+                <script className="flex flex-row relative text-5xl text-sky-500 pl-3">Me</script></p>
             </div>
             <div className="flex flex-col">
                <Image src="/People_in_programming.jpg" alt="PersonPrograming" width={550} height={550} className=" flex flex-col rounded-full absolute mr-96 left-40 " /> 
