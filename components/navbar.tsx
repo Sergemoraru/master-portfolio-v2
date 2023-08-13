@@ -2,29 +2,10 @@ import React, { useState, useEffect } from 'react';
 
 
 const NavBar = () => {
-  const [isScrolled, setIsScrolled] = useState(true);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const isTop = scrollTop === 0;
-      setIsScrolled(!isTop);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-
 
   return (
     <nav
-      className={`fixed top-0 w-full bg-white ${
-        isScrolled ? 'shadow-lg bg-slate-200' : 'transition-all duration-500 ease-in-out bg-transparent'
-      }`}
-      style={{ zIndex: isScrolled ? 999 : 'auto' }}
+      className="static top-0 shadow-lg rounded-lg mx-10 bg-slate-100"
     >
       <div className="flex flex-row justify-end items-center p-10">
         <div>
